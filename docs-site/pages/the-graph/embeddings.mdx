@@ -1,6 +1,6 @@
 # Embeddings
 
-The connections in Lattice were not hand-curated. They were generated through a two-stage pipeline combining vector embeddings with large language model classification. This page explains how the edge data was created.
+The connections in Framewerk were not hand-curated. They were generated through a two-stage pipeline combining vector embeddings with large language model classification. This page explains how the edge data was created.
 
 ---
 
@@ -40,7 +40,7 @@ Cosine similarity measures the angle between two vectors, ignoring their magnitu
 - **0.0** means orthogonal (unrelated)
 - **-1.0** means opposite direction (rare in practice with text embeddings)
 
-For Lattice, pairs with cosine similarity above approximately 0.35 were considered candidates for edges. This threshold was tuned to produce a graph that is densely connected enough to be navigable but not so dense that every node connects to every other node.
+For Framewerk, pairs with cosine similarity above approximately 0.35 were considered candidates for edges. This threshold was tuned to produce a graph that is densely connected enough to be navigable but not so dense that every node connects to every other node.
 
 ---
 

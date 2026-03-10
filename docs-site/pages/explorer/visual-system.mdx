@@ -1,12 +1,12 @@
 # Visual System
 
-The visual design of Lattice is modeled on neuroscience imaging, not AI marketing aesthetics. Every element -- from node color to bloom parameters to particle behavior -- is specified precisely. This page documents the full visual system.
+The visual design of Framewerk is modeled on neuroscience imaging, not AI marketing aesthetics. Every element -- from node color to bloom parameters to particle behavior -- is specified precisely. This page documents the full visual system.
 
 ---
 
 ## Design Philosophy
 
-Three principles guide every visual decision in Lattice:
+Three principles guide every visual decision in Framewerk:
 
 1. **Monochrome at rest.** The resting graph is nearly black-and-white. Color appears only during activation or filtering. This ensures that when something fires, you notice it.
 2. **Clinical precision.** Bloom is tight, not diffuse. Lines are thin, not glowing. Typography is monospaced for labels. The aesthetic is a research instrument, not a marketing demo.
@@ -167,4 +167,4 @@ Labels are not shown at all zoom levels. At far zoom, nodes are unlabeled dots. 
 
 ## Color Constants
 
-Every color in the visual system is defined in a single file: `lib/constants.ts`. This is the single source of truth. No colors are defined inline in components, shaders, or styles. If you want to modify any color in Lattice, change it in `constants.ts` and it propagates everywhere.
+Every color in the visual system is defined in a single file: `lib/constants.ts`. This is the single source of truth. No colors are defined inline in components, shaders, or styles. If you want to modify any color in Framewerk, change it in `constants.ts` and it propagates everywhere.

@@ -1,6 +1,6 @@
 # API Key Setup
 
-The Oracle requires an Anthropic API key to function. This page walks you through obtaining a key, configuring it in Lattice, and understanding how it is stored and used.
+The Oracle requires an Anthropic API key to function. This page walks you through obtaining a key, configuring it in Framewerk, and understanding how it is stored and used.
 
 ---
 
@@ -10,20 +10,20 @@ The Oracle requires an Anthropic API key to function. This page walks you throug
 2. Create an account or sign in.
 3. Navigate to **API Keys** in the dashboard.
 4. Click **Create Key**.
-5. Give it a name (e.g., "Lattice") and copy the key. It starts with `sk-ant-`.
+5. Give it a name (e.g., "Framewerk") and copy the key. It starts with `sk-ant-`.
 6. Store the key securely. You will not be able to see it again after leaving the page.
 
 You will need to add credit to your Anthropic account before the key can make API calls. Anthropic offers a small free tier for new accounts; after that, API usage is billed per token.
 
 ---
 
-## Entering Your Key in Lattice
+## Entering Your Key in Framewerk
 
 When you first enter Oracle Mode (click the ORACLE tab), the input area shows an inline field for your API key. This appears directly in the Oracle card, not in a separate settings menu.
 
 1. Click the ORACLE tab at the top of the screen.
 2. Paste your API key into the key field (labeled with a key icon).
-3. Lattice immediately validates your key by making a small test API call.
+3. Framewerk immediately validates your key by making a small test API call.
 4. If the key is valid, a green dot indicator appears next to the key field.
 5. The key field collapses, and the Oracle input area becomes active.
 
@@ -47,10 +47,10 @@ Your API key is stored in **localStorage** in your browser. This means:
 When you make an Oracle query, the flow is:
 
 ```
-Your browser → Lattice API route (/api/oracle) → Anthropic API → Response
+Your browser → Framewerk API route (/api/oracle) → Anthropic API → Response
 ```
 
-The API key is sent from your browser to Lattice's API route (which runs on the same server or Vercel function as the rest of the app). The API route uses the key to authenticate with Anthropic's API and returns the response. At no point is the key stored server-side or transmitted to a third party.
+The API key is sent from your browser to Framewerk's API route (which runs on the same server or Vercel function as the rest of the app). The API route uses the key to authenticate with Anthropic's API and returns the response. At no point is the key stored server-side or transmitted to a third party.
 
 ---
 
@@ -70,7 +70,7 @@ To remove your key entirely, clear the field and dismiss the modal. Your key wil
 
 ## Self-Hosted Instances
 
-If you are self-hosting Lattice, you have an additional option: setting the API key as a server-side environment variable.
+If you are self-hosting Framewerk, you have an additional option: setting the API key as a server-side environment variable.
 
 Create a `.env.local` file in the project root:
 
@@ -123,5 +123,5 @@ The server-side key takes precedence over any client-side key. If both are prese
 
 ### Oracle tab does not appear
 
-- The Oracle tab is always visible. If you do not see it, check that you are using the latest version of Lattice.
+- The Oracle tab is always visible. If you do not see it, check that you are using the latest version of Framewerk.
 - Clear your browser cache and reload.

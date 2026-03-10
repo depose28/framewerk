@@ -26,7 +26,7 @@ export function MobileGate({ children }: { children: React.ReactNode }) {
             className="font-mono text-[11px] tracking-[0.3em] uppercase mb-6"
             style={{ color: "#5A7A8A" }}
           >
-            Lattice
+            Framewerk
           </h1>
           <p className="font-sans text-[14px] leading-relaxed mb-4" style={{ color: "#6A8090" }}>
             This 3D neural graph is built for larger screens. For the full experience with

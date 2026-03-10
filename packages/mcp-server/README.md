@@ -1,6 +1,6 @@
-# @lattice/mcp-server
+# Framewerk MCP Server
 
-An MCP (Model Context Protocol) server that exposes the Lattice mental models graph -- 700 mental models connected by 2796 typed edges -- as tools for any MCP-compatible AI agent. Search models, explore connections by type, browse disciplines, and consult the Oracle for situation-specific synthesis.
+An MCP (Model Context Protocol) server that exposes the Framewerk mental models graph -- 700 mental models connected by 2796 typed edges -- as tools for any MCP-compatible AI agent. Search models, explore connections by type, browse disciplines, and consult the Oracle for situation-specific synthesis.
 
 ## Installation
 
@@ -17,9 +17,9 @@ Add the following to your `claude_desktop_config.json` (typically at `~/Library/
 ```json
 {
   "mcpServers": {
-    "lattice": {
+    "framewerk": {
       "command": "node",
-      "args": ["/absolute/path/to/lattice/packages/mcp-server/dist/index.js"]
+      "args": ["/absolute/path/to/framewerk/packages/mcp-server/dist/index.js"]
     }
   }
 }
@@ -28,7 +28,7 @@ Add the following to your `claude_desktop_config.json` (typically at `~/Library/
 ## Usage with Claude Code
 
 ```bash
-claude mcp add lattice node /absolute/path/to/lattice/packages/mcp-server/dist/index.js
+claude mcp add framewerk node /absolute/path/to/framewerk/packages/mcp-server/dist/index.js
 ```
 
 ## Available Tools
@@ -91,7 +91,7 @@ Edge types: `complementary`, `structural_kinship`, `tensioning`, `prerequisite`,
 
 ### oracle
 
-Consult the Lattice Oracle with a decision or situation. Returns a synthesis weaving the most relevant models into a framework, plus 15 models classified by role (supporting, challenging, process).
+Consult the Framewerk Oracle with a decision or situation. Returns a synthesis weaving the most relevant models into a framework, plus 15 models classified by role (supporting, challenging, process).
 
 ```
 Input:  { "situation": "Should I quit my job to start a company?", "api_key": "sk-ant-..." }

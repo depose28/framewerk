@@ -1,6 +1,6 @@
 # Rendering Pipeline
 
-Lattice renders 700 nodes, 2,796 edges, and thousands of particles at 60fps using Three.js. This page explains the rendering architecture, the specific Three.js techniques used, and why each choice was made.
+Framewerk renders 700 nodes, 2,796 edges, and thousands of particles at 60fps using Three.js. This page explains the rendering architecture, the specific Three.js techniques used, and why each choice was made.
 
 ---
 
@@ -23,7 +23,7 @@ Each layer is implemented as a separate React component under `components/graph/
 
 Drawing 700 individual meshes would require 700 separate draw calls per frame. With `THREE.InstancedMesh`, all 700 spheres are drawn in a single call. The GPU receives one geometry template (a sphere) and a list of 700 transformation matrices (position, scale, rotation), plus per-instance attributes for color and activation state.
 
-This is the single most important performance decision in Lattice. Without instancing, the graph would not run at 60fps on most hardware.
+This is the single most important performance decision in Framewerk. Without instancing, the graph would not run at 60fps on most hardware.
 
 ### Instance Attributes
 
@@ -68,7 +68,7 @@ The sigmoid function ensures smooth interpolation between these color stops rath
 
 ### Why LineSegments
 
-Edges could be rendered as tubes (cylindrical meshes), ribbons (flat quads), or lines. Lattice uses `THREE.LineSegments` -- the thinnest possible representation.
+Edges could be rendered as tubes (cylindrical meshes), ribbons (flat quads), or lines. Framewerk uses `THREE.LineSegments` -- the thinnest possible representation.
 
 Reasons:
 - **Performance**: LineSegments are extremely cheap to render. One draw call handles all 2,796 edges.
@@ -125,7 +125,7 @@ The spawn timing is staggered so particles along the same edge are evenly distri
 
 ### Effect Composer
 
-Lattice uses the Three.js EffectComposer for post-processing. Two effects are applied after the main scene render:
+Framewerk uses the Three.js EffectComposer for post-processing. Two effects are applied after the main scene render:
 
 ### Bloom (UnrealBloomPass)
 
@@ -186,6 +186,6 @@ When the InfoPanel opens, the camera's view offset is adjusted to shift the view
 
 ## WebGL Context
 
-Lattice creates a single WebGL context for the entire application. Three.js manages the context lifecycle. If the context is lost (due to GPU memory pressure or system sleep), Three.js attempts to restore it automatically.
+Framewerk creates a single WebGL context for the entire application. Three.js manages the context lifecycle. If the context is lost (due to GPU memory pressure or system sleep), Three.js attempts to restore it automatically.
 
 The canvas uses `antialias: true` for smooth edges on node spheres. This has a minor performance cost but is important for the visual quality of 700 small spheres.

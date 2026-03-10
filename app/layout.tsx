@@ -15,16 +15,16 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"),
-  title: "Lattice",
+  title: "Framewerk",
   description: "Clinical neural activation graph. 700 mental models as neurons.",
   openGraph: {
-    title: "Lattice",
+    title: "Framewerk",
     description: "700 mental models as neurons. Explore connections, fire the Oracle.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lattice",
+    title: "Framewerk",
     description: "700 mental models as neurons. Explore connections, fire the Oracle.",
   },
 };

@@ -5,7 +5,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { toolDefinitions, handleTool } from "./tools.js";
 
 const server = new McpServer({
-  name: "lattice",
+  name: "framewerk",
   version: "1.0.0",
 });
 
@@ -31,6 +31,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("Failed to start Lattice MCP server:", err);
+  console.error("Failed to start Framewerk MCP server:", err);
   process.exit(1);
 });

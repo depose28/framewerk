@@ -104,7 +104,7 @@ export const toolDefinitions = [
   {
     name: "oracle",
     description:
-      "Consult the Lattice Oracle: describe a decision, situation, or question, and get a synthesis of the most relevant mental models with their roles (supporting/challenging/process). Requires your own Anthropic API key.",
+      "Consult the Framewerk Oracle: describe a decision, situation, or question, and get a synthesis of the most relevant mental models with their roles (supporting/challenging/process). Requires your own Anthropic API key.",
     inputSchema: {
       type: "object" as const,
       properties: {

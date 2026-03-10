@@ -1,6 +1,6 @@
 # The 700 Mental Models
 
-Lattice contains 700 mental models -- decision-making frameworks, cognitive biases, mathematical principles, and thinking tools drawn from 10 distinct disciplines. This page explains what the models are, how they are organized, and what the data looks like.
+Framewerk contains 700 mental models -- decision-making frameworks, cognitive biases, mathematical principles, and thinking tools drawn from 10 distinct disciplines. This page explains what the models are, how they are organized, and what the data looks like.
 
 ---
 
@@ -8,7 +8,7 @@ Lattice contains 700 mental models -- decision-making frameworks, cognitive bias
 
 A mental model is a simplified representation of how something works. It is a thinking tool you can apply to decisions, problems, and situations to reason more clearly. Some are formal (Bayes' Theorem, Nash Equilibrium), some are heuristic (Occam's Razor, Pareto Principle), and some describe cognitive patterns (Anchoring Bias, Dunning-Kruger Effect).
 
-The 700 models in Lattice span a wide range of abstraction. Some are foundational concepts taught in undergraduate courses. Others are specialized frameworks used by professional investors, game theorists, or behavioral researchers. Together, they form a comprehensive map of structured thinking.
+The 700 models in Framewerk span a wide range of abstraction. Some are foundational concepts taught in undergraduate courses. Others are specialized frameworks used by professional investors, game theorists, or behavioral researchers. Together, they form a comprehensive map of structured thinking.
 
 ---
 
@@ -49,7 +49,7 @@ One of the 10 disciplines listed above. This determines the model's color when d
 
 A brief description of the model, typically 1-2 sentences. These summaries are intentionally concise -- they provide enough context to recognize the model and understand its core idea, but they are not comprehensive explanations.
 
-All summaries in the source data are capped at 300 characters. In practice, 692 of the 700 summaries end mid-sentence at the character limit. Lattice's display layer cleans these up by truncating at the last complete sentence.
+All summaries in the source data are capped at 300 characters. In practice, 692 of the 700 summaries end mid-sentence at the character limit. Framewerk's display layer cleans these up by truncating at the last complete sentence.
 
 ### Degree
 
@@ -98,9 +98,9 @@ The result is a collection that ranges from universally known concepts (Opportun
 
 ## Working With the Data
 
-If you are self-hosting Lattice, the model data lives at `public/data/nodes.json`. This file is part of the repository and should not be modified -- doing so may break edge references, since edges reference models by ID.
+If you are self-hosting Framewerk, the model data lives at `public/data/nodes.json`. This file is part of the repository and should not be modified -- doing so may break edge references, since edges reference models by ID.
 
-If you want to extend Lattice with your own models, you would need to:
+If you want to extend Framewerk with your own models, you would need to:
 
 1. Add new entries to `nodes.json` with unique IDs
 2. Generate new edges for those models (see [Embeddings](/the-graph/embeddings) for the methodology)

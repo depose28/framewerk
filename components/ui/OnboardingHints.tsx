@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useGraphStore } from "@/store/graphStore";
 
-const STORAGE_KEY = "lattice-onboarded";
+const STORAGE_KEY = "framewerk-onboarded";
 
 const hints = [
   { key: "click", text: "Click any node to explore a mental model" },

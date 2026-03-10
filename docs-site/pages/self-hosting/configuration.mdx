@@ -1,12 +1,12 @@
 # Configuration
 
-Lattice is designed to work out of the box with minimal configuration. This page covers the environment variables, build options, and customization points available when self-hosting.
+Framewerk is designed to work out of the box with minimal configuration. This page covers the environment variables, build options, and customization points available when self-hosting.
 
 ---
 
 ## Environment Variables
 
-Lattice uses a single optional environment variable:
+Framewerk uses a single optional environment variable:
 
 ### ANTHROPIC_API_KEY
 
@@ -26,7 +26,7 @@ ANTHROPIC_API_KEY=sk-ant-your-key-here
 
 ## No Database Required
 
-Lattice does not use a database. All data is stored in two static JSON files:
+Framewerk does not use a database. All data is stored in two static JSON files:
 
 - `public/data/nodes.json` -- 700 mental models with names, disciplines, and summaries.
 - `public/data/edges.json` -- 2,796 connections with types and weights.
@@ -39,7 +39,7 @@ User state (API key, layout cache, onboarding status) is stored in the browser's
 
 ## Color Customization
 
-All colors in Lattice are defined in `lib/constants.ts`. This file is the single source of truth for:
+All colors in Framewerk are defined in `lib/constants.ts`. This file is the single source of truth for:
 
 - Background color
 - Node colors (rest, hover, activation sequence)
@@ -132,7 +132,7 @@ The Oracle uses `claude-sonnet-4-20250514` by default. To use a different Claude
 
 ## Build Configuration
 
-Lattice uses a standard Next.js build process:
+Framewerk uses a standard Next.js build process:
 
 ```bash
 npm run build    # Production build
@@ -145,7 +145,7 @@ The Next.js configuration is in `next.config.js` (or `.mjs`). The default config
 
 ### TypeScript
 
-Lattice uses TypeScript in strict mode. The `tsconfig.json` enforces:
+Framewerk uses TypeScript in strict mode. The `tsconfig.json` enforces:
 
 - `strict: true`
 - No `any` types (enforced by convention, not compiler flag)

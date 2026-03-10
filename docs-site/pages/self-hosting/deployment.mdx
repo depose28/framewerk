@@ -1,6 +1,6 @@
 # Deployment
 
-Lattice is a standard Next.js application that can be deployed anywhere Next.js runs. This page covers deployment to Vercel (the simplest option) and alternative platforms.
+Framewerk is a standard Next.js application that can be deployed anywhere Next.js runs. This page covers deployment to Vercel (the simplest option) and alternative platforms.
 
 ---
 
@@ -10,10 +10,10 @@ Vercel is the company behind Next.js and provides the most straightforward deplo
 
 ### One-Click Deploy
 
-1. Push your Lattice repository to GitHub (or GitLab/Bitbucket).
+1. Push your Framewerk repository to GitHub (or GitLab/Bitbucket).
 2. Go to [vercel.com](https://vercel.com) and sign in.
 3. Click **Add New Project**.
-4. Import your Lattice repository.
+4. Import your Framewerk repository.
 5. Vercel auto-detects the Next.js framework. Accept the default build settings.
 6. (Optional) Add the `ANTHROPIC_API_KEY` environment variable if you want server-side Oracle access.
 7. Click **Deploy**.
@@ -26,7 +26,7 @@ In the Vercel dashboard:
 
 1. Go to your project settings.
 2. Click **Domains**.
-3. Add your custom domain (e.g., `lattice.yourdomain.com`).
+3. Add your custom domain (e.g., `framewerk.yourdomain.com`).
 4. Update your DNS records as instructed (CNAME or A record).
 
 SSL is automatically provisioned by Vercel.
@@ -48,7 +48,7 @@ By default, Vercel deploys automatically on every push to your main branch. Pull
 
 ## Alternative Platforms
 
-Lattice runs on any platform that supports Next.js. Here are the most common alternatives.
+Framewerk runs on any platform that supports Next.js. Here are the most common alternatives.
 
 ### Docker
 
@@ -80,8 +80,8 @@ CMD ["npm", "start"]
 Build and run:
 
 ```bash
-docker build -t lattice .
-docker run -p 3000:3000 -e ANTHROPIC_API_KEY=sk-ant-... lattice
+docker build -t framewerk .
+docker run -p 3000:3000 -e ANTHROPIC_API_KEY=sk-ant-... framewerk
 ```
 
 ### Railway
@@ -97,7 +97,7 @@ Netlify supports Next.js through the `@netlify/plugin-nextjs` plugin. Note that 
 
 ### Static Export
 
-Lattice cannot be deployed as a fully static site (using `next export`) because the Oracle uses an API route (`/api/oracle`). If you do not need the Oracle, you could modify the application for static export, but this is not a supported configuration.
+Framewerk cannot be deployed as a fully static site (using `next export`) because the Oracle uses an API route (`/api/oracle`). If you do not need the Oracle, you could modify the application for static export, but this is not a supported configuration.
 
 ---
 
@@ -111,7 +111,7 @@ Three.js and other JavaScript bundles are automatically code-split and cached by
 
 ### WebGL Requirements
 
-Lattice requires WebGL support in the browser. All modern desktop and mobile browsers support WebGL. Users on very old devices or browsers with WebGL disabled will see a blank canvas.
+Framewerk requires WebGL support in the browser. All modern desktop and mobile browsers support WebGL. Users on very old devices or browsers with WebGL disabled will see a blank canvas.
 
 There is no server-side rendering of the 3D graph. The Three.js components use the `'use client'` directive and render entirely in the browser. This means the server does not need GPU capabilities.
 
@@ -144,7 +144,7 @@ Consider adding error tracking (Sentry, LogRocket, etc.) if deploying for a larg
 
 ## Security Checklist
 
-Before deploying a public Lattice instance:
+Before deploying a public Framewerk instance:
 
 - [ ] **HTTPS**: Ensure your deployment uses HTTPS. Vercel provides this automatically. Other platforms may require configuration.
 - [ ] **API key exposure**: If you set `ANTHROPIC_API_KEY` as a server-side environment variable, ensure it is not exposed in client-side code or build logs.
@@ -156,7 +156,7 @@ Before deploying a public Lattice instance:
 
 ## Updates
 
-To update your deployment with the latest Lattice code:
+To update your deployment with the latest Framewerk code:
 
 1. Pull the latest changes from the repository.
 2. If on Vercel with automatic deployments, pushing to main triggers a new deploy.

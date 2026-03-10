@@ -1,6 +1,6 @@
 # Quickstart
 
-Get Lattice running locally in under two minutes. No database, no external services (except optionally Anthropic for the Oracle), no complex configuration.
+Get Framewerk running locally in under two minutes. No database, no external services (except optionally Anthropic for the Oracle), no complex configuration.
 
 ---
 
@@ -19,8 +19,8 @@ A modern browser with WebGL support is required to view the graph. Chrome, Firef
 ## Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/lattice.git
-cd lattice
+git clone https://github.com/your-org/framewerk.git
+cd framewerk
 ```
 
 ---
@@ -47,7 +47,7 @@ The application starts on `http://localhost:3000`. Open this URL in your browser
 
 ## What You Should See
 
-On first load, Lattice performs a boot sequence: disciplines light up one by one across the graph, and then the full 3D visualization appears. All 700 nodes are rendered as grey spheres in 3D space, with thin dendrite connections between them.
+On first load, Framewerk performs a boot sequence: disciplines light up one by one across the graph, and then the full 3D visualization appears. All 700 nodes are rendered as grey spheres in 3D space, with thin dendrite connections between them.
 
 The first load takes a few seconds longer than subsequent visits because the force-directed layout must be computed. This layout is cached in localStorage, so future visits load instantly.
 
@@ -88,7 +88,7 @@ Restart the dev server. The Oracle will now work for all users without requiring
 After cloning, the key directories are:
 
 ```
-lattice/
+framewerk/
   app/              # Next.js app router pages and API routes
   components/       # React components (graph/ and ui/)
   lib/              # Constants, graph utilities, Three.js helpers
@@ -125,7 +125,7 @@ npm run dev -- -p 3001
 
 ### Node.js Version Too Old
 
-Lattice requires Node.js 18+. If you see syntax errors or module resolution failures, check your Node version:
+Framewerk requires Node.js 18+. If you see syntax errors or module resolution failures, check your Node version:
 
 ```bash
 node --version

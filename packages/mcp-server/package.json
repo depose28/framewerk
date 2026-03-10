@@ -1,11 +1,11 @@
 {
-  "name": "lattice-mcp-server",
+  "name": "framewerk-mcp-server",
   "version": "1.0.0",
-  "description": "MCP server exposing the Lattice mental models graph (700 models, 2796 edges) as tools for AI agents",
+  "description": "MCP server exposing the Framewerk mental models graph (700 models, 2796 edges) as tools for AI agents",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "lattice-mcp": "dist/index.js"
+    "framewerk-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",

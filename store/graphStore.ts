@@ -149,16 +149,16 @@ export const useGraphStore = create<GraphState>((set) => ({
   setApiKey: (key) => {
     if (typeof window !== "undefined") {
       if (key) {
-        localStorage.setItem("lattice-anthropic-api-key", key);
+        localStorage.setItem("framewerk-anthropic-api-key", key);
       } else {
-        localStorage.removeItem("lattice-anthropic-api-key");
+        localStorage.removeItem("framewerk-anthropic-api-key");
       }
     }
     set({ apiKey: key });
   },
   hydrateApiKey: () => {
     if (typeof window === "undefined") return;
-    const stored = localStorage.getItem("lattice-anthropic-api-key");
+    const stored = localStorage.getItem("framewerk-anthropic-api-key");
     if (stored) set({ apiKey: stored });
   },
 

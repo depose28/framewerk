@@ -1,6 +1,6 @@
 # Oracle Overview
 
-The Oracle is Lattice's AI-powered reasoning layer. It takes a situation you describe in natural language and maps it onto the graph of 700 mental models, identifying the frameworks most relevant to your thinking.
+The Oracle is Framewerk's AI-powered reasoning layer. It takes a situation you describe in natural language and maps it onto the graph of 700 mental models, identifying the frameworks most relevant to your thinking.
 
 ---
 
@@ -86,7 +86,7 @@ The synthesis provides a starting framework, but the real value is in the indivi
 
 ## Privacy
 
-The Oracle requires an Anthropic API key to function. Your query is sent to Anthropic's API through Lattice's proxy route (`/api/oracle`). It is not stored, logged, or shared with any other service.
+The Oracle requires an Anthropic API key to function. Your query is sent to Anthropic's API through Framewerk's proxy route (`/api/oracle`). It is not stored, logged, or shared with any other service.
 
 Your API key is stored in localStorage in your browser. It is never sent to any server other than Anthropic's API endpoint. See [API Key Setup](/oracle/api-key-setup) for details.
 
@@ -94,4 +94,4 @@ Your API key is stored in localStorage in your browser. It is never sent to any 
 
 ## Cost
 
-Each Oracle query makes two API calls to Claude Sonnet (one for shortlisting, one for deep analysis). Pass 1 is lightweight (~300 output tokens). Pass 2 is larger (~3,500 output tokens with enriched context). A typical query costs a few cents total in API usage. Anthropic bills you directly through your API key -- Lattice does not add any markup or fees.
+Each Oracle query makes two API calls to Claude Sonnet (one for shortlisting, one for deep analysis). Pass 1 is lightweight (~300 output tokens). Pass 2 is larger (~3,500 output tokens with enriched context). A typical query costs a few cents total in API usage. Anthropic bills you directly through your API key -- Framewerk does not add any markup or fees.

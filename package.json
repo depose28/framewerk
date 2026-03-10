@@ -1,14 +1,14 @@
 {
-  "name": "lattice",
+  "name": "framewerk",
   "version": "0.1.0",
   "license": "MIT",
   "author": "Philipp Beer",
   "description": "A 3D neural graph of 700 mental models — explore decision-making frameworks as an interactive brain",
   "keywords": ["mental-models", "graph", "three.js", "visualization", "decision-making", "neural-network"],
-  "homepage": "https://github.com/philippbeer/lattice",
+  "homepage": "https://framewerk.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/philippbeer/lattice.git"
+    "url": "https://github.com/philippbeer/framewerk.git"
   },
   "scripts": {
     "dev": "next dev",

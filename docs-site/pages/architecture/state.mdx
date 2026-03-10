@@ -1,6 +1,6 @@
 # State Management
 
-Lattice uses a single Zustand store for all application state. This page documents the store structure, key actions, and the reasoning behind the state management architecture.
+Framewerk uses a single Zustand store for all application state. This page documents the store structure, key actions, and the reasoning behind the state management architecture.
 
 ---
 
@@ -171,7 +171,7 @@ Selectors ensure that a component only re-renders when the specific state it dep
 
 In a typical Three.js React application, state flows through many layers: Canvas > Scene > Group > Mesh > Material. Passing callbacks and state through all these layers via props creates tight coupling and verbose code.
 
-Lattice avoids this entirely. Any component at any depth can read or update state by importing `useGraphStore`. The Zustand store acts as a global state bus.
+Framewerk avoids this entirely. Any component at any depth can read or update state by importing `useGraphStore`. The Zustand store acts as a global state bus.
 
 This is not the same as unstructured global state (the kind that causes bugs in large applications). The store has a defined shape, typed actions, and selectors that limit subscription scope. It is global in access but structured in design.
 

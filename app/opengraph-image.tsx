@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Lattice — 700 mental models as neurons";
+export const alt = "Framewerk — 700 mental models as neurons";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -110,7 +110,7 @@ export default function OGImage() {
               textTransform: "uppercase" as const,
             }}
           >
-            LATTICE
+            FRAMEWERK
           </div>
           <div
             style={{

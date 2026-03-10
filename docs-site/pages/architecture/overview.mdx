@@ -1,6 +1,6 @@
 # Architecture Overview
 
-Lattice is a Next.js application that renders a 3D graph using Three.js, manages state with Zustand, and communicates with the Anthropic API for Oracle functionality. This page covers the overall architecture, file structure, and key design decisions.
+Framewerk is a Next.js application that renders a 3D graph using Three.js, manages state with Zustand, and communicates with the Anthropic API for Oracle functionality. This page covers the overall architecture, file structure, and key design decisions.
 
 ---
 
@@ -22,7 +22,7 @@ Lattice is a Next.js application that renders a 3D graph using Three.js, manages
 ## File Structure
 
 ```
-lattice/
+framewerk/
   app/
     layout.tsx              # Root layout (metadata, fonts, global styles)
     page.tsx                # Main page -- composes all components
@@ -78,7 +78,7 @@ lattice/
 
 ### Client vs. Server Components
 
-Next.js App Router distinguishes between server components (rendered on the server) and client components (rendered in the browser). In Lattice:
+Next.js App Router distinguishes between server components (rendered on the server) and client components (rendered in the browser). In Framewerk:
 
 - **Server components**: `layout.tsx`, metadata, and any static content.
 - **Client components**: Everything under `components/graph/` and `components/ui/`. These use the `'use client'` directive because they depend on browser APIs (Three.js, localStorage, window events).
@@ -102,7 +102,7 @@ Every color constant -- background, nodes, edges, particles, disciplines, activa
 
 ### Force Layout: Compute Once, Cache Forever
 
-The 3D force-directed layout (computed by d3-force-3d) is expensive: 700 nodes with 2,796 edges takes several seconds. Lattice computes this once and stores the resulting positions in localStorage. On subsequent visits, positions are loaded from cache, and the layout computation is skipped entirely.
+The 3D force-directed layout (computed by d3-force-3d) is expensive: 700 nodes with 2,796 edges takes several seconds. Framewerk computes this once and stores the resulting positions in localStorage. On subsequent visits, positions are loaded from cache, and the layout computation is skipped entirely.
 
 The cache key includes a hash of the node and edge data, so if the data changes, the cache is automatically invalidated and the layout recomputes.
 
@@ -149,7 +149,7 @@ This makes deployment trivial: no database setup, no data migration, no connecti
 
 ## Dependencies
 
-Lattice has a minimal dependency footprint:
+Framewerk has a minimal dependency footprint:
 
 **Runtime dependencies**: Next.js, React, Three.js, Zustand, d3-force-3d, Anthropic SDK, Radix UI primitives.
 

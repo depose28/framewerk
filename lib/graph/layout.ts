@@ -7,7 +7,7 @@ import {
 import type { NodeData, EdgeData, LayoutNode, NodePosition } from "@/lib/graph/types";
 import { NODE_MIN_RADIUS, NODE_MAX_RADIUS } from "@/lib/constants";
 
-const CACHE_KEY = "lattice-layout-v4";
+const CACHE_KEY = "framewerk-layout-v4";
 const SIM_ITERATIONS = 300;
 
 interface SimNode {

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate high-quality edges.json for Lattice using semantic embeddings + Claude classification.
+Generate high-quality edges.json for Framewerk using semantic embeddings + Claude classification.
 
 Pipeline:
 1. Load nodes.json, clean summaries

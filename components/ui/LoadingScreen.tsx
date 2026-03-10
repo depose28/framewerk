@@ -76,7 +76,7 @@ export function LoadingScreen() {
         className="font-mono text-[10px] uppercase tracking-[0.2em] mb-3"
         style={{ color: "#3A5060" }}
       >
-        Mapping neural lattice
+        Mapping neural framewerk
       </p>
 
       {/* Progress bar */}
