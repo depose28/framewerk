@@ -4,9 +4,9 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 const config: DocsThemeConfig = {
   logo: <span style={{ fontWeight: 700, fontSize: '1.1rem', letterSpacing: '0.15em', fontFamily: 'monospace' }}>FRAMEWERK</span>,
   project: {
-    link: 'https://github.com/philippbeer/framewerk',
+    link: 'https://github.com/depose28/framewerk',
   },
-  docsRepositoryBase: 'https://github.com/philippbeer/framewerk/tree/main/docs-site',
+  docsRepositoryBase: 'https://github.com/depose28/framewerk/tree/main/docs-site',
   darkMode: true,
   nextThemes: {
     defaultTheme: 'dark',

@@ -8,7 +8,7 @@
   "homepage": "https://framewerk.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/philippbeer/framewerk.git"
+    "url": "https://github.com/depose28/framewerk.git"
   },
   "scripts": {
     "dev": "next dev",
