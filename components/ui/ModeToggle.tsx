@@ -31,38 +31,37 @@ export function ModeToggle() {
   const isOracle = appMode === "oracle";
 
   return (
-    <div
-      className="fixed top-5 left-1/2 -translate-x-1/2 z-30"
-    >
+    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-30">
       <div
-        className="relative flex items-center rounded-lg overflow-hidden"
+        className="relative flex items-stretch rounded-xl p-1.5"
         style={{
           background: "rgba(7, 11, 15, 0.92)",
-          border: "1px solid rgba(60, 90, 110, 0.18)",
+          border: "1px solid rgba(60, 90, 110, 0.15)",
           backdropFilter: "blur(12px)",
+          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.3)",
         }}
       >
-        {/* Sliding indicator */}
+        {/* Sliding background pill */}
         <div
-          className="absolute top-0 bottom-0 rounded-lg transition-all duration-300 ease-out"
+          className="absolute top-1.5 bottom-1.5 rounded-lg transition-all duration-300 ease-out"
           style={{
-            width: "50%",
-            left: isOracle ? "0%" : "50%",
+            width: "calc(50% - 6px)",
+            left: isOracle ? "6px" : "calc(50%)",
             background: isOracle
-              ? "rgba(232, 160, 48, 0.15)"
-              : "rgba(140, 180, 204, 0.1)",
-            borderBottom: isOracle
-              ? "2px solid rgba(232, 160, 48, 0.6)"
-              : "2px solid rgba(140, 180, 204, 0.4)",
+              ? "rgba(232, 160, 48, 0.12)"
+              : "rgba(140, 180, 204, 0.08)",
+            border: isOracle
+              ? "1px solid rgba(232, 160, 48, 0.25)"
+              : "1px solid rgba(140, 180, 204, 0.15)",
           }}
         />
 
         <button
           onClick={() => setAppMode("oracle")}
-          className="relative z-10 px-10 py-3 font-mono text-[12px] tracking-[0.2em]
-            uppercase transition-colors duration-300"
+          className="relative z-10 px-8 py-3 rounded-lg font-mono text-[11px] tracking-[0.2em]
+            uppercase transition-colors duration-300 min-w-[120px] text-center"
           style={{
-            color: isOracle ? "#E8A030" : "#4A6A7A",
+            color: isOracle ? "#E8A030" : "#3A5565",
           }}
         >
           Oracle
@@ -70,10 +69,10 @@ export function ModeToggle() {
 
         <button
           onClick={() => setAppMode("explore")}
-          className="relative z-10 px-10 py-3 font-mono text-[12px] tracking-[0.2em]
-            uppercase transition-colors duration-300"
+          className="relative z-10 px-8 py-3 rounded-lg font-mono text-[11px] tracking-[0.2em]
+            uppercase transition-colors duration-300 min-w-[120px] text-center"
           style={{
-            color: !isOracle ? "#B0C8D8" : "#4A6A7A",
+            color: !isOracle ? "#B0C8D8" : "#3A5565",
           }}
         >
           Explore
