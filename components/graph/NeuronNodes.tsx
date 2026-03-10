@@ -105,8 +105,8 @@ const fragmentShader = /* glsl */ `
 
     // fMRI discipline coloring: blend rest color toward discipline color
     // Hub nodes are brighter at rest — structural anchors glow like active synaptic junctions
-    vec3 hubTint = vec3(0.06, 0.04, 0.02) * smoothstep(0.6, 1.0, vHubness); // warm tint for top hubs
-    vec3 hubBrightened = uRestColor * (1.0 + vHubness * 0.7) + hubTint;
+    vec3 hubTint = vec3(0.08, 0.05, 0.02) * smoothstep(0.5, 1.0, vHubness); // warm tint for top hubs
+    vec3 hubBrightened = uRestColor * (1.0 + vHubness * 0.9) + hubTint;
     vec3 restColor = mix(hubBrightened, vDisciplineColor * 0.8 + vec3(0.1), vDisciplineGlow * 0.85);
 
     float act = sigmoid(vActivation, 8.0);
