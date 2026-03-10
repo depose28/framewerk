@@ -33,7 +33,7 @@ export function ModeToggle() {
 
   return (
     <div
-      className="fixed top-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 rounded-full px-2 py-2"
+      className="fixed top-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 rounded-full px-3 py-2.5"
       style={{
         background: "rgba(7, 11, 15, 0.88)",
         border: "1px solid rgba(60, 90, 110, 0.2)",
@@ -42,7 +42,7 @@ export function ModeToggle() {
     >
       <button
         onClick={() => setAppMode("oracle")}
-        className="relative px-9 py-3 rounded-full font-mono text-[14px] tracking-widest
+        className="relative px-12 py-3.5 rounded-full font-mono text-[14px] tracking-widest
           uppercase transition-all duration-300"
         style={{
           color: isOracle ? "#E8A030" : "#4A6A7A",
@@ -60,7 +60,7 @@ export function ModeToggle() {
 
       <button
         onClick={() => setAppMode("explore")}
-        className="relative px-9 py-3 rounded-full font-mono text-[14px] tracking-widest
+        className="relative px-12 py-3.5 rounded-full font-mono text-[14px] tracking-widest
           uppercase transition-all duration-300"
         style={{
           color: isExplore ? "#B0C8D8" : "#4A6A7A",
