@@ -148,31 +148,47 @@ export function useOracle() {
     // ── Pass 1: Shortlist 25 candidates from 700 ──
     useGraphStore.getState().setOraclePass(1);
 
-    const shortlistRes = await fetch("/api/oracle/shortlist", {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ query, history: historyPayload }),
-    });
+    let shortlistRes: Response;
+    try {
+      shortlistRes = await fetch("/api/oracle/shortlist", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ query, history: historyPayload }),
+      });
+    } catch (e) {
+      throw new Error(`Network error during shortlist: ${e instanceof Error ? e.message : "connection failed"}`);
+    }
 
     if (!shortlistRes.ok) {
-      const err = await shortlistRes.json();
-      throw new Error(err.error ?? "Oracle shortlist failed");
+      let msg = "Oracle shortlist failed";
+      try { const err = await shortlistRes.json(); msg = err.error ?? msg; } catch { /* non-JSON response */ }
+      throw new Error(msg);
     }
 
     const { candidates } = await shortlistRes.json() as { candidates: string[] };
 
+    if (!candidates || candidates.length === 0) {
+      throw new Error("No relevant models found. Try rephrasing your query.");
+    }
+
     // ── Pass 2: Deep analysis with enriched context ──
     useGraphStore.getState().setOraclePass(2);
 
-    const analysisRes = await fetch("/api/oracle", {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ query, candidates, history: historyPayload }),
-    });
+    let analysisRes: Response;
+    try {
+      analysisRes = await fetch("/api/oracle", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ query, candidates, history: historyPayload }),
+      });
+    } catch (e) {
+      throw new Error(`Network error during analysis: ${e instanceof Error ? e.message : "connection failed"}`);
+    }
 
     if (!analysisRes.ok) {
-      const err = await analysisRes.json();
-      throw new Error(err.error ?? "Oracle analysis failed");
+      let msg = "Oracle analysis failed";
+      try { const err = await analysisRes.json(); msg = err.error ?? msg; } catch { /* non-JSON response */ }
+      throw new Error(msg);
     }
 
     const data: OracleResponse = await analysisRes.json();
