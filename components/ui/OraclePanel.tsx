@@ -22,7 +22,7 @@ export function OraclePanel() {
   const [shareCopied, setShareCopied] = useState(false);
   const [synthCollapsed, setSynthCollapsed] = useState(false);
   const [keyModalOpen, setKeyModalOpen] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const followUpRef = useRef<HTMLInputElement>(null);
   const focusedCardRef = useRef<HTMLDivElement>(null);
   const { submitQuery, submitFollowUp, clearOracle } = useOracle();
@@ -491,7 +491,7 @@ function OracleInputCard({
   error: string | null;
   apiKey: string | null;
   oracleLoading: boolean;
-  inputRef: React.RefObject<HTMLInputElement | null>;
+  inputRef: React.RefObject<HTMLTextAreaElement | null>;
   onSubmit: () => void;
   onEscape: () => void;
   onOpenKeyModal: () => void;
@@ -592,22 +592,24 @@ function OracleInputCard({
                     opacity: hasKey ? 1 : 0.35,
                   }}
                 >
-                  <input
+                  <textarea
                     ref={inputRef}
-                    type="text"
+                    rows={3}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={(e) => {
-                      if (e.key === "Enter") onSubmit();
-                      else if (e.key === "Escape") onEscape();
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        onSubmit();
+                      } else if (e.key === "Escape") onEscape();
                     }}
                     placeholder={hasKey
                       ? PLACEHOLDERS[placeholderIdx]
                       : "Add your API key below to get started..."
                     }
                     disabled={!hasKey}
-                    className="w-full bg-transparent font-sans text-[14px] leading-relaxed text-[#C8DAE6]
-                      placeholder-[#3A5060] outline-none disabled:cursor-default"
+                    className="w-full bg-transparent font-sans text-[14px] leading-[1.6] text-[#C8DAE6]
+                      placeholder-[#3A5060] outline-none disabled:cursor-default resize-none"
                   />
                 </div>
 
