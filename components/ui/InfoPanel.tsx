@@ -146,7 +146,7 @@ export function InfoPanel() {
       }}
     >
       {/* ── Top section: model info ── */}
-      <div className="flex-shrink-0 px-7 pt-8 pb-6">
+      <div className="flex-shrink-0 px-7 pt-8 pb-10">
         {/* Top bar: back + close */}
         <div className="flex items-center justify-between mb-6">
           {canGoBack ? (
@@ -222,7 +222,7 @@ export function InfoPanel() {
       <div className="mx-7 h-px flex-shrink-0" style={{ background: "#1A2830" }} />
 
       {/* ── Bottom section: connections (scrollable) ── */}
-      <div className="flex-1 overflow-y-auto px-7 pt-6 pb-6">
+      <div className="flex-1 overflow-y-auto px-7 pt-8 pb-6">
         {topConnections.length > 0 && (
           <section className="mb-6">
             <SectionHeader>Connections</SectionHeader>
