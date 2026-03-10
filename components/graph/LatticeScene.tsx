@@ -269,7 +269,7 @@ export function LatticeScene() {
     let bootSequenceStarted = false;
     let currentViewShift = 0; // smooth transition for panel offset
     const INFO_PANEL_WIDTH = 360;
-    const ORACLE_PANEL_WIDTH = 500;
+    const ORACLE_PANEL_WIDTH = 580;
     const tempVec = new THREE.Vector3();
     function animate() {
       frameIdRef.current = requestAnimationFrame(animate);

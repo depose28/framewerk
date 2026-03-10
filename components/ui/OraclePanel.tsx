@@ -178,7 +178,7 @@ export function OraclePanel() {
 
     return (
       <div
-        className="fixed top-3 left-3 bottom-3 w-[500px] z-30 flex flex-col rounded-xl"
+        className="fixed top-3 left-3 bottom-3 w-[580px] z-30 flex flex-col rounded-xl"
         style={{
           background: "rgba(7, 11, 15, 0.96)",
           border: "1px solid rgba(60, 90, 110, 0.12)",
