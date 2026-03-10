@@ -37,7 +37,7 @@ interface CachedLayout {
 function computeRadius(degree: number, maxDegree: number): number {
   // Power curve: low-degree nodes stay small, high-degree hubs grow large
   const t = maxDegree > 0 ? degree / maxDegree : 0;
-  return NODE_MIN_RADIUS + Math.pow(t, 0.4) * (NODE_MAX_RADIUS - NODE_MIN_RADIUS);
+  return NODE_MIN_RADIUS + Math.pow(t, 0.55) * (NODE_MAX_RADIUS - NODE_MIN_RADIUS);
 }
 
 function getCachedLayout(nodeCount: number): Record<string, NodePosition> | null {

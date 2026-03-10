@@ -66,7 +66,7 @@ export const DISCIPLINE_COLOR_WINDOW_MS = 300; // how long discipline color is v
 // Node sizing
 export const NODE_BASE_RADIUS = 0.35;
 export const NODE_DEGREE_SCALE = 0.35; // legacy log scale
-export const NODE_MIN_RADIUS = 0.4;  // smallest nodes (degree 1-3)
+export const NODE_MIN_RADIUS = 0.35; // smallest nodes (degree 1-3)
 export const NODE_MAX_RADIUS = 3.0;  // top hub nodes (degree 50+)
 
 // Edge sizing
