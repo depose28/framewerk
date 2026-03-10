@@ -4,6 +4,8 @@ import nodesJson from "@/public/data/nodes.json";
 import edgesJson from "@/public/data/edges.json";
 import type { OracleMessage } from "@/lib/graph/types";
 
+export const maxDuration = 60;
+
 // Simple in-memory rate limiter
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 10;
