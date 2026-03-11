@@ -1,2 +1,12 @@
 {
+  "rewrites": [
+    {
+      "source": "/docs",
+      "destination": "https://docs-site-phi-ten.vercel.app/docs"
+    },
+    {
+      "source": "/docs/:path*",
+      "destination": "https://docs-site-phi-ten.vercel.app/docs/:path*"
+    }
+  ]
 }
