@@ -729,10 +729,13 @@ const PASS1_STAGES = [
 
 const PASS2_STAGES = [
   { at: 0, text: "Loading full model profiles & connections…", icon: "◇" },
-  { at: 3, text: "Mapping graph edges between candidates…", icon: "◈" },
-  { at: 6, text: "Analyzing tensions and complementary pairs…", icon: "◆" },
-  { at: 10, text: "Classifying models by role…", icon: "◇" },
-  { at: 14, text: "Composing your thinking framework…", icon: "◈" },
+  { at: 4, text: "Mapping graph edges between candidates…", icon: "◈" },
+  { at: 10, text: "Analyzing tensions and complementary pairs…", icon: "◆" },
+  { at: 18, text: "Evaluating supporting vs. challenging roles…", icon: "◇" },
+  { at: 28, text: "Identifying prerequisite chains…", icon: "◈" },
+  { at: 40, text: "Cross-referencing structural kinships…", icon: "◆" },
+  { at: 52, text: "Synthesizing insights across disciplines…", icon: "◇" },
+  { at: 65, text: "Composing your thinking framework…", icon: "◈" },
 ] as const;
 
 function OracleLoadingStages({ query }: { query: string }) {
@@ -777,14 +780,16 @@ function OracleLoadingStages({ query }: { query: string }) {
   }
   const stage = stages[stageIdx];
 
-  // Progress: Pass 1 fills 0–40%, Pass 2 fills 40–90%
+  // Progress: Pass 1 fills 0–40%, Pass 2 fills 40–92%
+  // Pass 2 uses asymptotic curve so it always feels like progress but never quite finishes
   let progress: number;
   if (!isPass2) {
     const pass1Progress = Math.min(stageElapsed / 8, 1);
     progress = pass1Progress * 40;
   } else {
-    const pass2Progress = Math.min(stageElapsed / 20, 1);
-    progress = 40 + pass2Progress * 50;
+    // Asymptotic: approaches 92% but never reaches it — 1 - e^(-t/40)
+    const pass2Progress = 1 - Math.exp(-stageElapsed / 40);
+    progress = 40 + pass2Progress * 52;
   }
 
   const formatTime = (s: number) => {
@@ -839,7 +844,7 @@ function OracleLoadingStages({ query }: { query: string }) {
       </div>
 
       {/* Stage message */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2.5">
           <span
             className="font-mono text-[11px] text-[#E8A030]"
@@ -855,6 +860,11 @@ function OracleLoadingStages({ query }: { query: string }) {
           {formatTime(elapsed)}
         </span>
       </div>
+
+      {/* Time expectation */}
+      <p className="font-mono text-[9px] text-[#3A5060] mb-8 ml-[22px]">
+        Deep analysis typically takes 60–90 seconds
+      </p>
 
       {/* Completed stages checklist */}
       <div className="space-y-2.5">
