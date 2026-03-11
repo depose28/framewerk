@@ -76,10 +76,10 @@ export function GraphLegend() {
           </span>
           {hintVisible && (
             <span
-              className="font-mono text-[9px] text-[#3A5565] transition-opacity duration-1000"
+              className="font-mono text-[9px] text-[#5A7A8A] transition-opacity duration-1000"
               style={{ animation: "subtleFlicker 3s ease-in-out infinite" }}
             >
-              click to filter
+              · click to filter
             </span>
           )}
         </div>
@@ -126,10 +126,10 @@ export function GraphLegend() {
           </button>
           {!edgesOpen && hintVisible && (
             <span
-              className="font-mono text-[9px] text-[#3A5565] transition-opacity duration-1000"
+              className="font-mono text-[9px] text-[#5A7A8A] transition-opacity duration-1000"
               style={{ animation: "subtleFlicker 3s ease-in-out 1.5s infinite" }}
             >
-              click to spotlight
+              · click to spotlight
             </span>
           )}
         </div>

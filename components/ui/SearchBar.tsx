@@ -126,21 +126,23 @@ export function SearchBar() {
           setQuery("");
           setSelectedIndex(0);
         }}
-        className="fixed top-5 right-5 z-30 flex items-center gap-3 px-6 py-3 rounded-xl
+        className="fixed top-6 right-5 z-30 flex items-center gap-4 px-8 py-3.5 rounded-xl
           transition-all duration-200 hover:bg-[#111E28]"
         style={{
-          background: "rgba(10, 16, 22, 0.9)",
-          border: "1px solid rgba(80, 110, 130, 0.25)",
+          background: "rgba(7, 11, 15, 0.92)",
+          border: "1px solid rgba(60, 90, 110, 0.15)",
+          backdropFilter: "blur(12px)",
+          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.3)",
         }}
       >
         <svg width="15" height="15" viewBox="0 0 12 12" fill="none">
           <circle cx="5" cy="5" r="3.5" stroke="#6A8A9A" strokeWidth="1.2" />
           <path d="M8 8L11 11" stroke="#6A8A9A" strokeWidth="1.2" strokeLinecap="round" />
         </svg>
-        <span className="font-mono text-[12px] text-[#6A8A9A] tracking-wider">
-          Search models
+        <span className="font-mono text-[11px] text-[#6A8A9A] tracking-[0.2em] uppercase">
+          Search
         </span>
-        <kbd className="font-mono text-[10px] text-[#4A6070] ml-4 px-2 py-1 rounded"
+        <kbd className="font-mono text-[10px] text-[#4A6070] px-2 py-1 rounded"
           style={{ border: "1px solid rgba(60, 90, 110, 0.2)" }}
         >⌘K</kbd>
       </button>
