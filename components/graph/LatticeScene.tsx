@@ -50,7 +50,8 @@ function SynapseModeOverlay() {
           exitSynapse();
           setSelectedNode(null);
         }}
-        className="ml-2 font-mono text-[9px] text-[#6A8A9A] hover:text-[#B0D0E8] transition-colors"
+        className="ml-2 font-mono text-[9px] text-[#6A8A9A] hover:text-[#B0D0E8] cursor-pointer transition-colors"
+        aria-label="Exit synapse mode"
       >
         ✕
       </button>
@@ -99,6 +100,7 @@ export function LatticeScene() {
   const fireNode = useGraphStore((s) => s.fireNode);
   const isSynapseMode = useGraphStore((s) => s.synapseMode);
   const synapseFocusId = useGraphStore((s) => s.synapseFocusId);
+  const isLoading = useGraphStore((s) => s.loading);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const container = containerRef.current;
@@ -894,7 +896,11 @@ export function LatticeScene() {
       <div
         ref={containerRef}
         className="fixed inset-0 w-full h-full"
-        style={{ background: BACKGROUND_COLOR }}
+        style={{
+          background: BACKGROUND_COLOR,
+          animation: !isLoading ? "graphFadeIn 1.2s ease-out" : undefined,
+          opacity: isLoading ? 0 : 1,
+        }}
       />
       {tooltipData && (
         <Tooltip

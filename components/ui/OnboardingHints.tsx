@@ -6,10 +6,10 @@ import { useGraphStore } from "@/store/graphStore";
 const STORAGE_KEY = "framewerk-onboarded";
 
 const hints = [
-  { key: "graph", text: "700 mental models connected by 2,796 semantic edges" },
-  { key: "explore", text: "Click nodes to explore · Double-click for Synapse Mode flythrough" },
-  { key: "oracle", text: "Switch to Oracle — describe a situation and get a thinking framework" },
-  { key: "search", text: "⌘K to search · Filter by discipline · Spotlight edge types" },
+  { key: "graph", text: "700 mental models · 2,796 semantic edges" },
+  { key: "explore", text: "Click nodes to explore · Double-click for Synapse Mode" },
+  { key: "oracle", text: "Oracle — describe a situation, get a thinking framework" },
+  { key: "search", text: "⌘K search · Filter disciplines · Spotlight connections" },
 ];
 
 export function OnboardingHints() {
@@ -63,40 +63,34 @@ export function OnboardingHints() {
         animation: "onboardingFadeIn 0.8s ease-out",
       }}
     >
-      <div
-        className="flex flex-col gap-3 px-6 py-5 rounded-lg pointer-events-auto"
-        style={{
-          background: "rgba(7, 11, 15, 0.92)",
-          border: "1px solid rgba(60, 90, 110, 0.2)",
-          backdropFilter: "blur(12px)",
-          animation: dismissed ? "onboardingFadeOut 0.5s ease-in forwards" : undefined,
-        }}
-      >
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#3A5060] mb-1">
-          Quick start
-        </span>
-        {hints.map((hint, i) => (
-          <div
-            key={hint.key}
-            className="flex items-center gap-3"
-            style={{
-              animation: `onboardingSlideIn 0.4s ease-out ${i * 0.1}s both`,
-            }}
+      {/* Specimen-label style — minimal, clinical, matches the graph aesthetic */}
+      <div className="pointer-events-auto">
+        <div className="flex flex-col gap-2.5">
+          {hints.map((hint, i) => (
+            <div
+              key={hint.key}
+              className="flex items-center gap-3"
+              style={{
+                animation: `onboardingSlideIn 0.4s ease-out ${i * 0.12}s both`,
+              }}
+            >
+              <span
+                className="w-[3px] h-[3px] rounded-full flex-shrink-0"
+                style={{ background: "#2A3B47" }}
+              />
+              <span className="font-mono text-[10px] text-[#4A6A7A] tracking-wide">
+                {hint.text}
+              </span>
+            </div>
+          ))}
+          <span
+            className="font-mono text-[8px] text-[#2A3B47] mt-1 tracking-wider uppercase text-center"
+            style={{ animation: "onboardingSlideIn 0.4s ease-out 0.6s both" }}
           >
-            <span
-              className="w-1 h-1 rounded-full flex-shrink-0"
-              style={{ background: "#4A6070" }}
-            />
-            <span className="font-mono text-[11px] text-[#7A8E9C]">
-              {hint.text}
-            </span>
-          </div>
-        ))}
-        <span className="font-mono text-[9px] text-[#1E2E3A] mt-1 text-center">
-          Click anywhere to dismiss
-        </span>
+            Click anywhere to begin
+          </span>
+        </div>
       </div>
-
     </div>
   );
 }

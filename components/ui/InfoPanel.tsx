@@ -115,7 +115,7 @@ export function InfoPanel() {
     .filter((c) => c.neighbor)
     .sort((a, b) => b.edge.strength - a.edge.strength);
 
-  const topConnections = allConnections.slice(0, 8);
+  const topConnections = allConnections.slice(0, 6);
 
   // Group by type for the breakdown
   const byType = new Map<string, typeof allConnections>();
@@ -155,7 +155,7 @@ export function InfoPanel() {
                 goBack();
                 playFireSound(0.5);
               }}
-              className="flex items-center gap-1.5 text-[#5A7A8A] hover:text-[#8CB4CC] transition-colors"
+              className="flex items-center gap-1.5 cursor-pointer text-[#5A7A8A] hover:text-[#8CB4CC] transition-colors"
               aria-label="Go back"
             >
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
@@ -168,9 +168,9 @@ export function InfoPanel() {
           )}
           <button
             onClick={() => setSelectedNode(null)}
-            className="w-6 h-6 flex items-center justify-center
+            className="w-6 h-6 flex items-center justify-center cursor-pointer
               text-[#4A6070] hover:text-[#8CB4CC] transition-colors"
-            aria-label="Close"
+            aria-label="Close panel"
           >
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
               <path d="M1 1L9 9M9 1L1 9" stroke="currentColor" strokeWidth="1.5" />
@@ -245,7 +245,7 @@ export function InfoPanel() {
                   <button
                     key={edge.source + "-" + edge.target}
                     onClick={() => navigateToNode(neighbor.id)}
-                    className="w-full text-left group"
+                    className="w-full text-left group cursor-pointer"
                   >
                     {/* Row 1: name + type */}
                     <div className="flex items-center gap-2 mb-1">

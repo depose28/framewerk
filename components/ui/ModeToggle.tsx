@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGraphStore } from "@/store/graphStore";
 
 export function ModeToggle() {
@@ -10,6 +10,16 @@ export function ModeToggle() {
   const oracleLoading = useGraphStore((s) => s.oracleLoading);
   const oracleRef = useRef<HTMLButtonElement>(null);
   const exploreRef = useRef<HTMLButtonElement>(null);
+  const [flashKey, setFlashKey] = useState(0);
+  const prevMode = useRef(appMode);
+
+  // Trigger flash on mode change
+  useEffect(() => {
+    if (prevMode.current !== appMode) {
+      setFlashKey((k) => k + 1);
+      prevMode.current = appMode;
+    }
+  }, [appMode]);
 
   // Tab key toggles mode (when not in an input)
   useEffect(() => {
@@ -34,8 +44,23 @@ export function ModeToggle() {
 
   return (
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-30">
+      {/* Mode switch flash overlay */}
+      {flashKey > 0 && (
+        <div
+          key={flashKey}
+          className="fixed inset-0 pointer-events-none z-50"
+          style={{
+            background: isOracle
+              ? "radial-gradient(circle at 50% 0%, rgba(232, 160, 48, 0.08), transparent 60%)"
+              : "radial-gradient(circle at 50% 0%, rgba(140, 180, 204, 0.06), transparent 60%)",
+            animation: "modeFlash 0.6s ease-out forwards",
+          }}
+        />
+      )}
       <div
         className="relative grid grid-cols-2 rounded-xl"
+        role="tablist"
+        aria-label="App mode"
         style={{
           background: "rgba(7, 11, 15, 0.92)",
           border: "1px solid rgba(60, 90, 110, 0.15)",
@@ -45,9 +70,11 @@ export function ModeToggle() {
       >
         <button
           ref={oracleRef}
+          role="tab"
+          aria-selected={isOracle}
           onClick={() => setAppMode("oracle")}
           className="relative px-10 py-3.5 rounded-xl font-mono text-[11px] tracking-[0.2em]
-            uppercase transition-all duration-300 min-w-[130px] text-center"
+            uppercase cursor-pointer transition-all duration-300 min-w-[130px] text-center"
           style={{
             color: isOracle ? "#E8A030" : "#3A5565",
             background: isOracle ? "rgba(232, 160, 48, 0.13)" : "transparent",
@@ -59,9 +86,11 @@ export function ModeToggle() {
 
         <button
           ref={exploreRef}
+          role="tab"
+          aria-selected={!isOracle}
           onClick={() => setAppMode("explore")}
           className="relative px-10 py-3.5 rounded-xl font-mono text-[11px] tracking-[0.2em]
-            uppercase transition-all duration-300 min-w-[130px] text-center"
+            uppercase cursor-pointer transition-all duration-300 min-w-[130px] text-center"
           style={{
             color: !isOracle ? "#B0C8D8" : "#3A5565",
             background: !isOracle ? "rgba(140, 180, 204, 0.08)" : "transparent",

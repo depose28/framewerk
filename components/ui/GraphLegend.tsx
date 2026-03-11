@@ -82,7 +82,8 @@ export function GraphLegend() {
             <button
               key={d}
               onClick={() => toggleDiscipline(d)}
-              className="flex items-center gap-2.5 group w-full text-left"
+              className="flex items-center gap-2.5 group w-full text-left cursor-pointer"
+              aria-pressed={isActive}
             >
               <span
                 className="w-2 h-2 rounded-full flex-shrink-0 transition-all duration-200"
@@ -114,9 +115,20 @@ export function GraphLegend() {
       <div>
         <button
           onClick={() => setEdgesOpen(!edgesOpen)}
-          className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#6A8A9A] hover:text-[#8CB4CC] transition-colors mb-2 block"
+          className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#6A8A9A] hover:text-[#8CB4CC] cursor-pointer transition-colors mb-2 flex items-center gap-1.5"
+          aria-expanded={edgesOpen}
         >
-          {edgesOpen ? "— Connections" : "+ Connections"}
+          <svg
+            width="6"
+            height="6"
+            viewBox="0 0 6 6"
+            fill="none"
+            className="transition-transform duration-200"
+            style={{ transform: edgesOpen ? "rotate(90deg)" : "rotate(0deg)" }}
+          >
+            <path d="M1 0.5L5 3L1 5.5V0.5Z" fill="currentColor" />
+          </svg>
+          Connections
         </button>
         {edgesOpen && (
           <div className="space-y-1.5">
@@ -130,7 +142,8 @@ export function GraphLegend() {
                 <button
                   key={type}
                   onClick={() => setHighlightedEdgeType(type)}
-                  className="flex items-center gap-2.5 w-full text-left group"
+                  className="flex items-center gap-2.5 w-full text-left group cursor-pointer"
+                  aria-pressed={isHighlighted}
                 >
                   <span
                     className="flex-shrink-0 rounded-full transition-all duration-200"

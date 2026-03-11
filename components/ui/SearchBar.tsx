@@ -127,7 +127,7 @@ export function SearchBar() {
           setSelectedIndex(0);
         }}
         className="fixed top-6 right-5 z-30 flex items-center gap-4 px-8 py-3.5 rounded-xl
-          transition-all duration-200 hover:bg-[#111E28]"
+          cursor-pointer transition-all duration-200 hover:bg-[#111E28]"
         style={{
           background: "rgba(7, 11, 15, 0.92)",
           border: "1px solid rgba(60, 90, 110, 0.15)",
@@ -181,6 +181,10 @@ export function SearchBar() {
                 onKeyDown={handleInputKeyDown}
                 placeholder="Search mental models..."
                 className="flex-1 bg-transparent font-mono text-[13px] text-[#B0C8D8] placeholder-[#2A3B47] outline-none"
+                role="combobox"
+                aria-expanded={results.length > 0}
+                aria-autocomplete="list"
+                aria-label="Search mental models"
               />
               <kbd
                 className="font-mono text-[9px] text-[#2A3B47] px-1.5 py-0.5 rounded"
@@ -201,7 +205,7 @@ export function SearchBar() {
                       key={node.id}
                       onClick={() => selectResult(node)}
                       onMouseEnter={() => setSelectedIndex(i)}
-                      className="w-full text-left px-4 py-2.5 flex items-center gap-3 transition-colors"
+                      className="w-full text-left px-4 py-2.5 flex items-center gap-3 cursor-pointer transition-colors"
                       style={{
                         background: isSelected ? "rgba(42, 59, 71, 0.3)" : "transparent",
                       }}
@@ -209,18 +213,11 @@ export function SearchBar() {
                       <span
                         className="w-[6px] h-[6px] rounded-full flex-shrink-0"
                         style={{ background: discColor }}
+                        title={node.discipline}
                       />
-                      <div className="flex-1 min-w-0">
-                        <span className="font-sans text-[13px] text-[#B0C8D8] block truncate">
-                          {node.name}
-                        </span>
-                        <span
-                          className="font-mono text-[9px] tracking-wide"
-                          style={{ color: discColor, opacity: 0.7 }}
-                        >
-                          {node.discipline}
-                        </span>
-                      </div>
+                      <span className="font-sans text-[13px] text-[#B0C8D8] flex-1 min-w-0 truncate">
+                        {node.name}
+                      </span>
                       <span className="font-mono text-[9px] text-[#2A3B47] flex-shrink-0">
                         {node.degree} links
                       </span>

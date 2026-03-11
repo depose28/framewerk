@@ -13,14 +13,15 @@ export function AutoRotateButton() {
     <button
       onClick={() => setAutoRotate(!autoRotate)}
       className="fixed bottom-14 right-5 z-20 flex items-center gap-2.5 px-4 py-2 rounded-full
-        transition-all duration-300 group"
+        cursor-pointer transition-all duration-300 group"
       style={{
         background: autoRotate ? "rgba(140, 180, 204, 0.08)" : "rgba(7, 11, 15, 0.7)",
         border: autoRotate
           ? "1px solid rgba(140, 180, 204, 0.2)"
           : "1px solid rgba(60, 90, 110, 0.15)",
       }}
-      title={autoRotate ? "Stop rotation" : "Auto-rotate graph"}
+      aria-label={autoRotate ? "Stop rotation" : "Auto-rotate graph"}
+      aria-pressed={autoRotate}
     >
       {autoRotate ? (
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">

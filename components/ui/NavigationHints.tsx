@@ -1,84 +1,88 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useGraphStore } from "@/store/graphStore";
 
 export function NavigationHints() {
   const nodes = useGraphStore((s) => s.nodes);
   const selectedNodeId = useGraphStore((s) => s.selectedNodeId);
-  const [dismissed, setDismissed] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const hoveredNodeId = useGraphStore((s) => s.hoveredNodeId);
+  const navigationHistory = useGraphStore((s) => s.navigationHistory);
+  const synapseMode = useGraphStore((s) => s.synapseMode);
+  const appMode = useGraphStore((s) => s.appMode);
+  const [ready, setReady] = useState(false);
 
-  // Fade in after boot sequence settles
+  // Delay showing hints until after boot sequence
   useEffect(() => {
     if (nodes.length === 0) return;
-    const timer = setTimeout(() => setVisible(true), 8000);
+    const timer = setTimeout(() => setReady(true), 8000);
     return () => clearTimeout(timer);
   }, [nodes.length]);
 
-  // Auto-dismiss after 20s of visibility
-  useEffect(() => {
-    if (!visible) return;
-    const timer = setTimeout(() => setDismissed(true), 20000);
-    return () => clearTimeout(timer);
-  }, [visible]);
+  // Build contextual hints based on current state
+  const hints = useMemo(() => {
+    if (!ready || nodes.length === 0) return [];
+    if (appMode === "oracle") return [];
 
-  if (!visible || nodes.length === 0) return null;
+    const items: { icon: string; label: string; key: string }[] = [];
 
-  // Show different hints based on state
-  const hasSelection = selectedNodeId !== null;
+    if (synapseMode) {
+      items.push({ icon: "click", label: "Click labels to fly", key: "synapse-click" });
+      items.push({ icon: "esc", label: "Exit synapse", key: "synapse-esc" });
+      if (navigationHistory.length > 0) {
+        items.push({ icon: "backspace", label: "Go back", key: "synapse-back" });
+      }
+      return items;
+    }
+
+    if (selectedNodeId) {
+      items.push({ icon: "arrows", label: "Cycle connections", key: "sel-arrows" });
+      if (navigationHistory.length > 0) {
+        items.push({ icon: "backspace", label: "Go back", key: "sel-back" });
+      }
+      items.push({ icon: "esc", label: "Deselect", key: "sel-esc" });
+      return items;
+    }
+
+    if (hoveredNodeId) {
+      items.push({ icon: "click", label: "Select", key: "hov-click" });
+      items.push({ icon: "dblclick", label: "Deep dive", key: "hov-dbl" });
+      return items;
+    }
+
+    // Default — no interaction yet
+    items.push({ icon: "scroll", label: "Zoom", key: "def-scroll" });
+    items.push({ icon: "drag", label: "Rotate", key: "def-drag" });
+    items.push({ icon: "click", label: "Select node", key: "def-click" });
+    return items;
+  }, [ready, nodes.length, selectedNodeId, hoveredNodeId, navigationHistory.length, synapseMode, appMode]);
+
+  if (hints.length === 0) return null;
 
   return (
     <div
       className="fixed bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5 px-5 py-2.5 rounded-full
-        transition-all duration-1000"
+        transition-all duration-500"
       style={{
         background: "rgba(7, 11, 15, 0.85)",
         border: "1px solid rgba(60, 90, 110, 0.15)",
         backdropFilter: "blur(8px)",
-        opacity: dismissed ? 0 : 1,
-        pointerEvents: dismissed ? "none" : "auto",
       }}
     >
-      {!hasSelection ? (
-        <>
-          <HintItem icon="scroll" label="Zoom" />
-          <HintDivider />
-          <HintItem icon="drag" label="Rotate" />
-          <HintDivider />
-          <HintItem icon="click" label="Select node" />
-          <HintDivider />
-          <HintItem icon="dblclick" label="Deep dive" />
-        </>
-      ) : (
-        <>
-          <HintItem icon="arrows" label="Cycle connections" />
-          <HintDivider />
-          <HintItem icon="backspace" label="Go back" />
-          <HintDivider />
-          <HintItem icon="esc" label="Deselect" />
-        </>
-      )}
-    </div>
-  );
-}
-
-function HintDivider() {
-  return (
-    <div
-      className="w-px h-3 flex-shrink-0"
-      style={{ background: "rgba(60, 90, 110, 0.2)" }}
-    />
-  );
-}
-
-function HintItem({ icon, label }: { icon: string; label: string }) {
-  return (
-    <div className="flex items-center gap-2">
-      <HintIcon type={icon} />
-      <span className="font-mono text-[9px] text-[#4A6A7A] tracking-wider uppercase">
-        {label}
-      </span>
+      {hints.map((hint, i) => (
+        <div key={hint.key} className="flex items-center gap-2">
+          {i > 0 && (
+            <div
+              className="w-px h-3 flex-shrink-0 mr-3"
+              style={{ background: "rgba(60, 90, 110, 0.2)" }}
+            />
+          )}
+          <HintIcon type={hint.icon} />
+          <span className="font-mono text-[9px] text-[#4A6A7A] tracking-wider uppercase">
+            {hint.label}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }

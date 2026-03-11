@@ -11,6 +11,17 @@
   box-sizing: border-box;
 }
 
+/* Global focus-visible indicator */
+:focus-visible {
+  outline: 1px solid #6A8A9A;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline on canvas and Three.js container */
+canvas:focus-visible {
+  outline: none;
+}
+
 html,
 body {
   width: 100%;
@@ -58,4 +69,16 @@ body {
 @keyframes neuronPulse {
   0%, 100% { transform: scale(0.8); opacity: 0.3; }
   50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+/* Graph entrance — fade in after loading */
+@keyframes graphFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mode switch flash */
+@keyframes modeFlash {
+  from { opacity: 0.06; }
+  to { opacity: 0; }
 }
