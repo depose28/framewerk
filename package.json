@@ -4,7 +4,14 @@
   "license": "MIT",
   "author": "Philipp Beer",
   "description": "A 3D neural graph of 700 mental models — explore decision-making frameworks as an interactive brain",
-  "keywords": ["mental-models", "graph", "three.js", "visualization", "decision-making", "neural-network"],
+  "keywords": [
+    "mental-models",
+    "graph",
+    "three.js",
+    "visualization",
+    "decision-making",
+    "neural-network"
+  ],
   "homepage": "https://framewerk.dev",
   "repository": {
     "type": "git",
@@ -20,6 +27,7 @@
     "@anthropic-ai/sdk": "^0.78.0",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@vercel/analytics": "^2.0.0",
     "d3-force-3d": "^3.0.6",
     "next": "16.1.6",
     "react": "19.2.3",
