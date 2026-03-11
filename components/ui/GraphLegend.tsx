@@ -43,11 +43,6 @@ export function GraphLegend() {
     return counts;
   }, [edges]);
 
-  if (nodes.length === 0) return null;
-
-  // Hide when oracle results are showing (panel overlaps)
-  const oracleResultsVisible = oracleMode && appMode === "oracle";
-
   const hasDisciplineFilter = activeDisciplines.size > 0;
 
   // Show "click to filter" hint until first interaction
@@ -57,6 +52,11 @@ export function GraphLegend() {
       setHintVisible(false);
     }
   }, [hasDisciplineFilter, highlightedEdgeType]);
+
+  if (nodes.length === 0) return null;
+
+  // Hide when oracle results are showing (panel overlaps)
+  const oracleResultsVisible = oracleMode && appMode === "oracle";
 
   return (
     <div
