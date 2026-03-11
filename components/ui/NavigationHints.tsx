@@ -70,7 +70,11 @@ export function NavigationHints() {
       }}
     >
       {hints.map((hint, i) => (
-        <div key={hint.key} className="flex items-center gap-2">
+        <div
+          key={hint.key}
+          className="flex items-center gap-2"
+          style={{ animation: `hintFadeIn 0.3s ease-out ${i * 0.05}s both` }}
+        >
           {i > 0 && (
             <div
               className="w-px h-3 flex-shrink-0 mr-3"

@@ -247,24 +247,30 @@ export function InfoPanel() {
                     onClick={() => navigateToNode(neighbor.id)}
                     className="w-full text-left group cursor-pointer"
                   >
-                    {/* Row 1: name + type */}
+                    {/* Row 1: name + type with colored indicator */}
                     <div className="flex items-center gap-2 mb-1">
                       <span
                         className="w-[5px] h-[5px] rounded-full flex-shrink-0"
                         style={{ background: nColor }}
                       />
                       <span
-                        className="font-sans text-[12px] truncate
+                        className="font-sans text-[12px] truncate flex-1
                           group-hover:text-[#D0E0EA] transition-colors"
                         style={{ color: "#8CA0AE" }}
                       >
                         {neighbor.name}
                       </span>
-                      <span
-                        className="font-mono text-[8px] tracking-[0.03em] flex-shrink-0"
-                        style={{ color: "#4A6070" }}
-                      >
-                        {meta?.label ?? edge.type.replace(/_/g, " ")}
+                      <span className="flex items-center gap-1.5 flex-shrink-0">
+                        <span
+                          className="w-[4px] h-[4px] rounded-full"
+                          style={{ background: eColor, opacity: 0.7 }}
+                        />
+                        <span
+                          className="font-mono text-[8px] tracking-[0.03em]"
+                          style={{ color: "#5A7A8A" }}
+                        >
+                          {meta?.label ?? edge.type.replace(/_/g, " ")}
+                        </span>
                       </span>
                     </div>
 
@@ -297,13 +303,8 @@ export function InfoPanel() {
           </section>
         )}
 
-        {/* Footer hint */}
-        <div className="mt-4 pt-4" style={{ borderTop: "1px solid #1A2830" }}>
-          <p className="font-mono text-[9px] leading-relaxed" style={{ color: "#3A5060" }}>
-            Click any connection to navigate there.
-            {!synapseMode && " Double-click a node for Synapse Mode."}
-          </p>
-        </div>
+        {/* Bottom spacer */}
+        <div className="h-4" />
       </div>
     </div>
   );

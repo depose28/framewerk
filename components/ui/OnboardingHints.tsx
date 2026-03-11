@@ -63,8 +63,16 @@ export function OnboardingHints() {
         animation: "onboardingFadeIn 0.8s ease-out",
       }}
     >
+      {/* Subtle vignette behind text so it's readable during boot sequence */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse 50% 30% at 50% 50%, rgba(7, 11, 15, 0.6), transparent)",
+          animation: "vignetteIn 1s ease-out",
+        }}
+      />
       {/* Specimen-label style — minimal, clinical, matches the graph aesthetic */}
-      <div className="pointer-events-auto">
+      <div className="pointer-events-auto relative">
         <div className="flex flex-col gap-2.5">
           {hints.map((hint, i) => (
             <div

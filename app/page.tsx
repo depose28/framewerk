@@ -21,16 +21,21 @@ export default function Home() {
       <OnboardingHints />
       <AutoRotateButton />
       <LoadingScreen />
-      {/* Bottom-right links */}
-      <div className="fixed bottom-5 right-5 z-20 flex items-center gap-6">
+      {/* Bottom-right links — unified style with AutoRotateButton */}
+      <div className="fixed bottom-5 right-5 z-20 flex items-center gap-2.5">
         <a
           href="/docs/integrations/mcp-server"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2.5 font-mono text-[13px] text-[#7A9AAA]
-            hover:text-[#E8A030] tracking-wider uppercase transition-colors group"
+          className="flex items-center gap-2 px-3.5 py-2 rounded-full font-mono text-[9px]
+            tracking-[0.15em] uppercase transition-all duration-300 group"
+          style={{
+            background: "rgba(7, 11, 15, 0.7)",
+            border: "1px solid rgba(60, 90, 110, 0.15)",
+            color: "#4A6A7A",
+          }}
         >
-          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" className="opacity-80 group-hover:opacity-100 transition-opacity">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="opacity-70 group-hover:opacity-100 transition-opacity">
             <circle cx="3" cy="7" r="1.5" fill="currentColor" />
             <circle cx="11" cy="4" r="1.5" fill="currentColor" />
             <circle cx="11" cy="10" r="1.5" fill="currentColor" />
@@ -38,13 +43,17 @@ export default function Home() {
           </svg>
           MCP
         </a>
-        <span className="text-[#4A6070]">&middot;</span>
         <a
           href="/docs"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-mono text-[13px] text-[#7A9AAA]
-            hover:text-[#8CB4CC] tracking-wider uppercase transition-colors"
+          className="flex items-center gap-2 px-3.5 py-2 rounded-full font-mono text-[9px]
+            tracking-[0.15em] uppercase transition-all duration-300"
+          style={{
+            background: "rgba(7, 11, 15, 0.7)",
+            border: "1px solid rgba(60, 90, 110, 0.15)",
+            color: "#4A6A7A",
+          }}
         >
           Docs
         </a>

@@ -308,11 +308,10 @@ export function OraclePanel() {
                               {result.name}
                             </span>
                             <span
-                              className="font-mono text-[9px] tracking-wider uppercase flex-shrink-0"
-                              style={{ color: isFocused ? dc : "#3A5060" }}
-                            >
-                              {result.discipline.split(" ")[0]}
-                            </span>
+                              className="w-[5px] h-[5px] rounded-full flex-shrink-0"
+                              style={{ background: dc, opacity: isFocused ? 1 : 0.4 }}
+                              title={result.discipline}
+                            />
                           </div>
 
                           {/* Expanded detail */}
@@ -413,10 +412,10 @@ export function OraclePanel() {
           )}
 
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[10px] text-[#3A5060] tracking-wider">
-              <span className="text-[#5A7A8A]">{"\u2191\u2193"}</span> browse
+            <span className="font-mono text-[9px] text-[#3A5060] tracking-wider">
+              <span className="text-[#5A7A8A]">{"\u2191\u2193"}</span> browse models
             </span>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-4">
               <button
                 onClick={() => {
                   const url = new URL(window.location.href);
@@ -425,27 +424,22 @@ export function OraclePanel() {
                   setShareCopied(true);
                   setTimeout(() => setShareCopied(false), 2000);
                 }}
-                className="font-mono text-[10px] text-[#4A6A7A] hover:text-[#8CB4CC]
-                  tracking-widest uppercase transition-colors"
+                className="font-mono text-[9px] text-[#4A6A7A] hover:text-[#8CB4CC]
+                  cursor-pointer tracking-widest uppercase transition-colors"
               >
                 {shareCopied ? "Copied!" : "Share"}
               </button>
               <button
                 onClick={() => setKeyModalOpen(true)}
-                className="flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase
-                  transition-colors"
-                style={{ color: apiKey ? "#4A6A7A" : "#E8A030" }}
-              >
-                <span
-                  className="w-[4px] h-[4px] rounded-full"
-                  style={{ background: apiKey ? "#5DBF6E" : "#4A6070" }}
-                />
-                Key
-              </button>
+                className="w-[6px] h-[6px] rounded-full cursor-pointer transition-colors"
+                style={{ background: apiKey ? "#5DBF6E" : "#4A6070" }}
+                aria-label="API key settings"
+                title={apiKey ? "API key active" : "Set API key"}
+              />
               <button
                 onClick={clearOracle}
-                className="font-mono text-[10px] text-[#4A6A7A] hover:text-[#8CB4CC]
-                  tracking-widest uppercase transition-colors"
+                className="font-mono text-[9px] text-[#5A7A8A] hover:text-[#E8A030]
+                  cursor-pointer tracking-widest uppercase transition-colors"
               >
                 New query
               </button>
