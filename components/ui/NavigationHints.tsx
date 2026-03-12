@@ -62,7 +62,7 @@ export function NavigationHints() {
   return (
     <div
       className="fixed bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-5 px-5 py-2.5 rounded-full
-        transition-all duration-500"
+        transition-all duration-500 hidden md:flex"
       style={{
         background: "rgba(7, 11, 15, 0.85)",
         border: "1px solid rgba(60, 90, 110, 0.15)",

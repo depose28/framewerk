@@ -22,7 +22,7 @@ export default function Home() {
       <AutoRotateButton />
       <LoadingScreen />
       {/* Bottom-right links */}
-      <div className="fixed bottom-5 right-5 z-20 flex items-center gap-3">
+      <div className="fixed bottom-5 right-5 z-20 flex items-center gap-3 hidden md:flex">
         <a
           href="/docs/integrations/mcp-server"
           target="_blank"

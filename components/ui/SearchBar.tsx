@@ -127,7 +127,8 @@ export function SearchBar() {
           setSelectedIndex(0);
         }}
         className="fixed top-6 right-5 z-30 flex items-center gap-4 px-8 py-3.5 rounded-xl
-          cursor-pointer transition-all duration-200 hover:bg-[#111E28]"
+          cursor-pointer transition-all duration-200 hover:bg-[#111E28]
+          max-md:px-4 max-md:py-3 max-md:gap-2 max-md:rounded-full"
         style={{
           background: "rgba(7, 11, 15, 0.92)",
           border: "1px solid rgba(60, 90, 110, 0.15)",
@@ -139,10 +140,10 @@ export function SearchBar() {
           <circle cx="5" cy="5" r="3.5" stroke="#6A8A9A" strokeWidth="1.2" />
           <path d="M8 8L11 11" stroke="#6A8A9A" strokeWidth="1.2" strokeLinecap="round" />
         </svg>
-        <span className="font-mono text-[11px] text-[#6A8A9A] tracking-[0.2em] uppercase">
+        <span className="font-mono text-[11px] text-[#6A8A9A] tracking-[0.2em] uppercase hidden md:inline">
           Search
         </span>
-        <kbd className="font-mono text-[10px] text-[#4A6070] px-2 py-1 rounded"
+        <kbd className="font-mono text-[10px] text-[#4A6070] px-2 py-1 rounded hidden md:inline"
           style={{ border: "1px solid rgba(60, 90, 110, 0.2)" }}
         >⌘K</kbd>
       </button>
@@ -150,7 +151,7 @@ export function SearchBar() {
       {/* Modal overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh]"
+          className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] max-md:pt-[8vh] max-md:px-3"
           style={{ background: "rgba(7, 11, 15, 0.7)" }}
           onClick={(e) => {
             if (e.target === e.currentTarget) {
@@ -187,7 +188,7 @@ export function SearchBar() {
                 aria-label="Search mental models"
               />
               <kbd
-                className="font-mono text-[9px] text-[#2A3B47] px-1.5 py-0.5 rounded"
+                className="font-mono text-[9px] text-[#2A3B47] px-1.5 py-0.5 rounded hidden md:inline"
                 style={{ border: "1px solid #1E2E3A" }}
               >
                 esc

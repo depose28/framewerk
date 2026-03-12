@@ -137,16 +137,22 @@ export function InfoPanel() {
 
   return (
     <div
-      className="fixed top-0 right-0 h-full w-[360px] z-40 flex flex-col
-        transition-transform duration-300 ease-out"
+      className="fixed z-40 flex flex-col transition-transform duration-300 ease-out
+        top-0 right-0 h-full w-[360px]
+        max-md:top-auto max-md:bottom-0 max-md:left-0 max-md:right-0 max-md:w-full max-md:h-[55vh] max-md:rounded-t-2xl"
       style={{
-        background: "rgba(7, 11, 15, 0.94)",
+        background: "rgba(7, 11, 15, 0.96)",
         borderLeft: "1px solid rgba(60, 90, 110, 0.15)",
-        backdropFilter: "blur(8px)",
+        backdropFilter: "blur(12px)",
       }}
     >
+      {/* Mobile drag handle */}
+      <div className="hidden max-md:flex justify-center pt-3 pb-1">
+        <div className="w-10 h-1 rounded-full" style={{ background: "#2A3B47" }} />
+      </div>
+
       {/* ── Top section: model info ── */}
-      <div className="flex-shrink-0 px-7 pt-8 pb-10">
+      <div className="flex-shrink-0 px-7 pt-8 pb-10 max-md:pt-4 max-md:pb-6">
         {/* Top bar: back + close */}
         <div className="flex items-center justify-between mb-6">
           {canGoBack ? (

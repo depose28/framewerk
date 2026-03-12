@@ -13,7 +13,7 @@ export function AutoRotateButton() {
     <button
       onClick={() => setAutoRotate(!autoRotate)}
       className="fixed bottom-14 right-5 z-20 flex items-center gap-2.5 px-4 py-2 rounded-full
-        cursor-pointer transition-all duration-300 group"
+        cursor-pointer transition-all duration-300 group hidden md:flex"
       style={{
         background: autoRotate ? "rgba(140, 180, 204, 0.08)" : "rgba(7, 11, 15, 0.7)",
         border: autoRotate

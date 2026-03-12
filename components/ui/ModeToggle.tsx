@@ -99,7 +99,8 @@ export function ModeToggle() {
           aria-selected={isOracle}
           onClick={() => setAppMode("oracle")}
           className="relative px-10 py-3.5 rounded-xl font-mono text-[11px] tracking-[0.2em]
-            uppercase cursor-pointer transition-all duration-300 min-w-[130px] text-center"
+            uppercase cursor-pointer transition-all duration-300 min-w-[130px] text-center
+            max-md:px-6 max-md:py-3 max-md:min-w-[90px] max-md:text-[10px]"
           style={{
             color: isOracle ? "#E8A030" : pulseOracle ? "#7A6A50" : "#3A5565",
             background: isOracle ? "rgba(232, 160, 48, 0.13)" : "transparent",
@@ -116,7 +117,8 @@ export function ModeToggle() {
           aria-selected={!isOracle}
           onClick={() => setAppMode("explore")}
           className="relative px-10 py-3.5 rounded-xl font-mono text-[11px] tracking-[0.2em]
-            uppercase cursor-pointer transition-all duration-300 min-w-[130px] text-center"
+            uppercase cursor-pointer transition-all duration-300 min-w-[130px] text-center
+            max-md:px-6 max-md:py-3 max-md:min-w-[90px] max-md:text-[10px]"
           style={{
             color: !isOracle ? "#B0C8D8" : "#3A5565",
             background: !isOracle ? "rgba(140, 180, 204, 0.08)" : "transparent",

@@ -178,7 +178,8 @@ export function OraclePanel() {
 
     return (
       <div
-        className="fixed top-3 left-3 bottom-3 w-[580px] z-30 flex flex-col rounded-xl"
+        className="fixed top-3 left-3 bottom-3 w-[580px] z-30 flex flex-col rounded-xl
+          max-md:top-0 max-md:left-0 max-md:bottom-0 max-md:right-0 max-md:w-full max-md:rounded-none"
         style={{
           background: "rgba(7, 11, 15, 0.96)",
           border: "1px solid rgba(60, 90, 110, 0.12)",
@@ -529,7 +530,7 @@ function OracleInputCard({
   const hasKey = !!apiKey || keyValidation === "valid";
 
   return (
-    <div className="fixed top-6 left-6 z-30 w-[460px]">
+    <div className="fixed top-6 left-6 z-30 w-[460px] max-md:left-3 max-md:right-3 max-md:w-auto max-md:top-20">
       <div
         className="rounded-xl transition-all duration-300"
         style={{

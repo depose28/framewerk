@@ -60,7 +60,7 @@ export function GraphLegend() {
 
   return (
     <div
-      className="fixed left-5 z-20 select-none transition-all duration-500"
+      className="fixed left-5 z-20 select-none transition-all duration-500 hidden md:block"
       style={{
         top: "50%",
         transform: "translateY(-50%)",

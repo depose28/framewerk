@@ -864,6 +864,60 @@ export function LatticeScene() {
     container.addEventListener("click", handleClick);
     container.addEventListener("dblclick", handleDoubleClick);
 
+    // Touch support — tap to select node (raycast on touchend)
+    let touchStartPos = { x: 0, y: 0 };
+    let touchStartTime = 0;
+    function handleTouchStart(e: TouchEvent) {
+      if (e.touches.length === 1) {
+        touchStartPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        touchStartTime = Date.now();
+      }
+    }
+    function handleTouchEnd(e: TouchEvent) {
+      if (!container) return;
+      const mesh = nodesMeshRef.current;
+      if (!mesh) return;
+      if (e.changedTouches.length !== 1) return;
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - touchStartPos.x;
+      const dy = touch.clientY - touchStartPos.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const elapsed = Date.now() - touchStartTime;
+      // Only count as tap if short duration and small movement (not drag/pinch)
+      if (dist > 20 || elapsed > 300) return;
+
+      const rect = container.getBoundingClientRect();
+      mouseRef.current.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseRef.current.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycasterRef.current.setFromCamera(mouseRef.current, camera);
+      const camDist = camera.position.length();
+      const hitScale = Math.max(6.0, camDist * 0.05); // larger hit area on touch
+      if (mesh.geometry.boundingSphere) {
+        mesh.geometry.boundingSphere.radius = hitScale;
+      }
+      const intersects = raycasterRef.current.intersectObject(mesh);
+
+      enableAudio();
+      if (intersects.length > 0 && intersects[0].instanceId !== undefined) {
+        const idx = intersects[0].instanceId;
+        const node = layoutNodesRef.current[idx];
+        if (node) {
+          setSelectedNode(node.id);
+          fireNode(node.id, 1.0);
+          playFireSound(1.0);
+        }
+      } else {
+        const state = useGraphStore.getState();
+        if (state.synapseMode) {
+          state.exitSynapseMode();
+        }
+        setSelectedNode(null);
+      }
+    }
+    container.addEventListener("touchstart", handleTouchStart, { passive: true });
+    container.addEventListener("touchend", handleTouchEnd);
+
     // Resize handler
     function onResize() {
       if (!container) return;
@@ -882,6 +936,8 @@ export function LatticeScene() {
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("click", handleClick);
       container.removeEventListener("dblclick", handleDoubleClick);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchend", handleTouchEnd);
       cancelAnimationFrame(frameIdRef.current);
       controls.dispose();
       renderer.dispose();

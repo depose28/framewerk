@@ -28,21 +28,23 @@ export function MobileGate({ children }: { children: React.ReactNode }) {
           >
             Framewerk
           </h1>
-          <p className="font-sans text-[14px] leading-relaxed mb-4" style={{ color: "#6A8090" }}>
-            This 3D neural graph is built for larger screens. For the full experience with
-            orbit controls, node exploration, and the Oracle, please visit on a desktop or tablet.
+          <p className="font-sans text-[14px] leading-relaxed mb-2" style={{ color: "#6A8090" }}>
+            700 mental models as neurons. Explore connections, ask the Oracle.
+          </p>
+          <p className="font-sans text-[12px] leading-relaxed mb-6" style={{ color: "#4A6070" }}>
+            Optimized for touch. For the full experience with keyboard shortcuts and legends, visit on desktop.
           </p>
           <button
             onClick={() => setDismissed(true)}
-            className="font-mono text-[10px] tracking-widest uppercase px-5 py-2 rounded-full
+            className="font-mono text-[10px] tracking-widest uppercase px-6 py-3 rounded-full
               transition-colors duration-200"
             style={{
-              color: "#8CB4CC",
-              border: "1px solid rgba(60, 90, 110, 0.3)",
-              background: "rgba(15, 22, 30, 0.5)",
+              color: "#E8A030",
+              border: "1px solid rgba(232, 160, 48, 0.3)",
+              background: "rgba(232, 160, 48, 0.08)",
             }}
           >
-            Continue anyway
+            Explore
           </button>
         </div>
       </div>
